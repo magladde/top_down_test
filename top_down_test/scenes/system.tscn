@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cssnwq1sgshq"]
+
+[ext_resource type="Texture2D" uid="uid://bvlc6ghoengyd" path="res://assets/background.png" id="1_0i2li"]
+[ext_resource type="Texture2D" uid="uid://bleq00luc4vjw" path="res://assets/planet05.png" id="1_68j0k"]
+[ext_resource type="PackedScene" uid="uid://drosxuuk5lw33" path="res://scenes/space_ship.tscn" id="3_rec6r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0i2li"]
+radius = 514.995
+
+[node name="System" type="Node2D"]
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("1_0i2li")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="background"]
+polygon = PackedVector2Array(-1465, -1440, 1502, -1493, 1529, 1507, -1518, 1521, -1498, -1484, -1680, -1345, -1631, 1725, 1600, 1636, 1625, -1580, -1583, -1588, -1680, -1360)
+
+[node name="planet" type="Area2D" parent="."]
+scale = Vector2(0.16, 0.16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="planet"]
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_0i2li")
+
+[node name="Sprite2D" type="Sprite2D" parent="planet"]
+texture = ExtResource("1_68j0k")
+
+[node name="SpaceShip" parent="." instance=ExtResource("3_rec6r")]
+
+[connection signal="area_entered" from="planet" to="SpaceShip" method="_on_planet_area_entered"]
+[connection signal="area_exited" from="planet" to="SpaceShip" method="_on_planet_area_exited"]
