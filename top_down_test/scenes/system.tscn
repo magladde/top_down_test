@@ -19,7 +19,6 @@ polygon = PackedVector2Array(-1465, -1440, 1502, -1493, 1529, 1507, -1518, 1521,
 scale = Vector2(0.16, 0.16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="planet"]
-scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_0i2li")
 
 [node name="Sprite2D" type="Sprite2D" parent="planet"]
